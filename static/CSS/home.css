@@ -42,10 +42,16 @@ a {
 }
 
 .logo {
+    position: relative;
     float: left;
     width: 178px;
     height: 42px;
     /* background-color: purple; */
+}
+.logo img {
+    position: absolute;
+    top: 6px;
+    width: 100%;
 }
 
 .nav {
@@ -280,18 +286,22 @@ a {
     color: orange;
 }
 .footer {
-    height: 185px;
+    height: 200px;
     background-color: rgb(255, 255, 255);
     margin-top: 20px;
     overflow: hidden;
 }
 .footer .w {
     /* 此处用margin-top会导致父元素塌陷 */
-    margin-top: 30px;
+    margin-top: 26px;
 
 }
 .copyright {
+    margin-top: 10px;
     float: left;
+}
+.copyright img {
+    width: 36%;
 }
 .copyright p {
     font-size: 12px;
@@ -314,6 +324,9 @@ a {
 .links dl {
     float: left;
     margin-left: 90px;
+}
+.links .about {
+    margin-left: 0;
 }
 .links dt {
     font-size: 15px;
