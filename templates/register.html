@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录页面</title>
+    <title>注册页面</title>
     <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body>
@@ -15,16 +15,15 @@
         <div class="div-form">
             <form action="" class="form-login" method="post">
                 <h1>图书馆</h1>
-                <input type="text" placeholder="帐号" name="username">
-                <input type="password" placeholder="密码" name="password">
+                <input type="text" placeholder="帐号(8个字符以内)" name="username" maxlength="8">
+                <input type="password" placeholder="密码(16个字符以内)" name="password" maxlength="16">
                 <div class="text-rcv">
                     {% for message in get_flashed_messages() %}
                         <div class="text-danger"> {{ message }}</div>
                     {% endfor %}
-                </div>
-                <button type="submit">登录</button>
+                </div><button type="submit">注册</button>
                 <div class="control">
-                    <span>没有帐号？<a href="/register">注册</a></span>
+                    <span>已有账号？<a href="/login">登录</a></span>
                 </div>
             </form>
         </div>

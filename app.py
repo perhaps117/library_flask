@@ -1,12 +1,14 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
+from application import *
 
 # 使用Flask 对象创建一个app 对象
 app = Flask(__name__)
-
+app.secret_key = 'foifjigioojgio'
 
 @app.route('/')
 def hello_world():  # put application's code here
     return 'Hello World!'
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -17,13 +19,40 @@ def login():
         password = request.form.get('password')
         # 服务器接收到账号后链接数据库，校验密码
         print('从服务器接收到的数据：', username, password)
-        # 登录成功后，跳转到管理页面
-        return redirect('/home')
+        result = verify(username, password)
+        if result == 1:
+            # 登录成功后，跳转到管理页面
+            return redirect('/home')
+        else:
+            flash('用户名或密码错误！')
+            return redirect('/login')
     return render_template('login.html')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    # 注册账号，并与数据库已有数据做对比
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        # 服务器接收到账号后链接数据库，校验密码
+        print('从服务器接收到的数据：', username, password)
+        result = register_sql(username, password)
+        if result == 1:
+            # 登录成功后，跳转到管理页面
+            flash('注册成功！')
+            return redirect('/login')
+        else:
+            flash('用户已存在！')
+            return redirect('/register')
+    return render_template('register.html')
+
+
 
 @app.route('/home')
 def home():
     return render_template('home.html')
 
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=6900)
