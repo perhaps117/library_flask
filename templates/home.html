@@ -34,7 +34,11 @@
         <!-- 用户模块 -->
         <div class="user">
             <img src="../static/images/user.jpg" alt="" style="vertical-align:middle;">
-            'perhaps
+            {% if user %}
+                {{ user }}
+            {% else %}
+                unknown
+            {% endif %}
         </div>
 
     </div>
@@ -105,9 +109,9 @@
                     <em>
                         HOT
                     </em>
-                    <a href="/read" target="_blank"><img src="../static/images/widget1.jpg" alt=""></a>
-                    <h4>罗马尼亚三部曲 (《狐狸那时已是猎人》...)</h4>
-                    <div class="info"><span>热门</span> • 10135人正在阅读</div>
+                    <a href="/read" target="_blank"><img src="../static/images/widget4.jpg" alt=""></a>
+                    <h4>三体1：地球往事 (军方探寻外星文明的...)</h4>
+                    <div class="info"><span>热门</span> • 12455人正在阅读</div>
                 </li>
                 <li>
                     <em>

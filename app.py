@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session, g
 from application import *
 
 # 使用Flask 对象创建一个app 对象
@@ -21,6 +21,7 @@ def login():
         print('从服务器接收到的数据：', username, password)
         result = verify(username, password)
         if result == 1:
+            session['user_name'] = username
             # 登录成功后，跳转到管理页面
             return redirect('/home')
         else:
@@ -48,14 +49,26 @@ def register():
     return render_template('register.html')
 
 
-
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    if hasattr(g, 'user'):
+        print(g.user)
+    context = {
+        'user': g.user
+    }
+    # print(g.user)
+    return render_template('home.html', **context)
 
 @app.route('/read')
 def read():
     return render_template('read.html')
+
+@app.before_request
+def before_request():
+    user_name = session.get('user_name')
+    if user_name:
+        g.user = user_name
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6900)
