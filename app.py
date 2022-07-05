@@ -5,12 +5,12 @@ from application import *
 app = Flask(__name__)
 app.secret_key = 'foifjigioojgio'
 
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+# @app.route('/')
+# def hello_world():  # put application's code here
+#     return 'Hello World!'
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     # 登录的功能
     # return '需要实现登录的逻辑'
@@ -26,7 +26,7 @@ def login():
             return redirect('/home')
         else:
             flash('用户名或密码错误！')
-            return redirect('/login')
+            return redirect('/')
     return render_template('login.html')
 
 
@@ -42,7 +42,7 @@ def register():
         if result == 1:
             # 登录成功后，跳转到管理页面
             flash('注册成功！')
-            return redirect('/login')
+            return redirect('/')
         else:
             flash('用户已存在！')
             return redirect('/register')
