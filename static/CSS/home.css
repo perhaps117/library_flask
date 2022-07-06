@@ -1,3 +1,14 @@
+@font-face {
+        font-family: 'icomoon';
+        src: url('../fonts/icomoon.eot?lw8zlx');
+        src: url('../fonts/icomoon.eot?lw8zlx#iefix') format('embedded-opentype'),
+            url('../fonts/icomoon.ttf?lw8zlx') format('truetype'),
+            url('../fonts/icomoon.woff?lw8zlx') format('woff'),
+            url('../fonts/icomoon.svg?lw8zlx#icomoon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: block;
+}
 * {
     margin: 0;
     padding: 0;
@@ -83,23 +94,29 @@ a {
 }
 .search input {
     float: left;
-    width: 260px;
+    width: 252px;
     height: 34px;
     border: 1.5px solid rgb(0, 154, 251);
     margin: 2.5px 0;
     border-right: 0;
     color: #505050;
     font-size: 13px;
-    padding-right: 10px;
+    padding: 0 8px;
+    outline: none;
 }
 .search button {
     float: left;
     width: 44px;
     height: 37px;
-    background-color: blue;
+    background-color: rgb(0, 154, 251);
     border: 0;
     margin: 2.5px 0;
-    background: url(../images/searchbutton.jpg) no-repeat -3px -2px
+}
+.search button span {
+    font-family: 'icomoon';
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
 }
 .user {
     float: left;
