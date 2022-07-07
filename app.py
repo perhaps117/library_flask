@@ -1,9 +1,11 @@
+import datetime
 from flask import Flask, render_template, request, redirect, flash, session, g
 from application import *
 
 # 使用Flask 对象创建一个app 对象
 app = Flask(__name__)
 app.secret_key = 'foifjigioojgio'
+app.permanent_session_lifetime = datetime.timedelta(seconds=20*60)
 
 # @app.route('/')
 # def hello_world():  # put application's code here
@@ -12,6 +14,7 @@ app.secret_key = 'foifjigioojgio'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    session.permanent = True
     # 登录的功能
     # return '需要实现登录的逻辑'
     if request.method == 'POST':

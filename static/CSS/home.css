@@ -87,7 +87,7 @@ a {
 
 .search {
     float: left;
-    width: 340px; 
+    width: 326px;
     height: 42px;
     background-color: transparent;
     margin-left: 120px;
@@ -118,14 +118,13 @@ a {
     font-size: 28px;
     font-weight: bold;
 }
-.user {
+.header .user {
     float: left;
     line-height: 37px;
     margin-left: 6px;
     font-size: 14px;
     color: #666;
 }
-
 /* banner开始 */
 .banner {
     height: 320px;
